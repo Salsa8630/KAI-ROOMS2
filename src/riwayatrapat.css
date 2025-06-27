@@ -1,0 +1,240 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* App Container */
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(179deg, #332198, #5d49d0);
+}
+
+/* KAI Header */
+.kai-header {
+  background-color: #332198;
+  padding: 9px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.kai-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  position: relative;
+}
+
+.kai-logo img {
+  height: 50px;
+  width: auto;
+}
+
+.kai-logo span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-left: -15px;
+}
+
+/* Content Area */
+.content-area {
+  padding: 0 20px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-title h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.search-input-container {
+  position: relative;
+  flex-grow: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  fill: #7B61FF; /* ungu polos */
+  pointer-events: none;
+}
+
+
+.search-input {
+  width: 100%;
+  height: 45px;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  padding-left: 36px;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.sort-button {
+  padding: 0 20px;
+  height: 45px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Meeting Table Styles */
+.meeting-table {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px #490eb01a;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr 1fr 1fr;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.th {
+  padding: 15px;
+  font-weight: 600;
+  color: #541789;
+  text-align: left;
+   font-size: 16px; 
+}
+
+.table-body {
+  background-color: white;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.td {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.judul-rapat {
+  font-weight: 500;
+}
+
+.tanggal-waktu {
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+.ruangan {
+  font-weight: 600;
+}
+
+.status-badge-riwayat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #CBCDF9;
+  color: #2F1F8A;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.status-icon {
+  color: #2F1F8A;
+  font-weight: bold;
+}
+
+.detail-button {
+  background-color: #2F1F8A;
+  color: white;
+  font-size: 14px;
+  padding: 6px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.empty-state {
+  padding: 30px;
+  text-align: center;
+  color: #777;
+  grid-column: span 5;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+
+}
+
+.back-button-riwayat {
+  background-color: white;
+  color: #2F1F8A;
+  font-weight: 600;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .search-section {
+    flex-direction: column;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 2fr 2fr 1fr;
+  }
+  
+  .status,
+  .actions {
+    display: none;
+  }
+  
+  .th.judul-rapat,
+  .td.judul-rapat {
+    grid-column: span 3;
+  }
+}

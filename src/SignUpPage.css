@@ -1,0 +1,92 @@
+.signup-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .signup-left {
+    flex: 1;
+    background: linear-gradient(179deg,  #f7825f, #2539a0); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .signup-illustration {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  .signup-right {
+    flex: 1;
+    padding: 60px 80px;
+    background-color: #fff;
+  }
+  
+  .signup-right h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-form label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    margin-top: 14px;
+    font-weight: 500;
+  }
+  
+  .signup-form input[type="text"],
+  .signup-form input[type="email"],
+  .signup-form input[type="tel"],
+  .signup-form input[type="password"] {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .signup-form input:focus {
+    border-color: #7f5fff;
+  }
+  
+  .terms {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+  }
+  
+  .terms input {
+    margin-right: 8px;
+  }
+  
+  .signup-button {
+    margin-top: 24px;
+    padding: 14px;
+    background-color: #5a60ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-button:hover {
+    background-color: #4a50d0;
+  }

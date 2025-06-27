@@ -1,0 +1,215 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 180vh;
+  display: flex;
+  color: white;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.statusHeader-hybrid {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.roomStatus-hybrid {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+.timerContainer-hybrid {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timerCircle-hybrid {
+  width: 200px;
+  height: 200px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.timerText {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.meetingInfo-hybrid {
+  text-align: center;
+  max-width: 600px;
+}
+
+.meetingCountdown-hybrid {
+  margin-bottom: 1rem;
+}
+
+.meetingTitle-hybrid {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.meetingDetails-hybrid {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.meetingType-hybrid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  margin: 1rem 0;
+  backdrop-filter: blur(5px);
+}
+
+.hybridIcon {
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.participantsInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.participantGroup {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.participantIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.participantCount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.participantLabel {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.participantCapacity {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 0.25rem;
+}
+
+.bookingTime {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  backdrop-filter: blur(5px);
+}
+
+.organizer {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.sidebar-hybrid {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.scheduleItem {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #4CAF50;
+}
+
+.scheduleTime {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.scheduleTitle {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.scheduleDetails {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.connectionIndicator {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(76, 175, 80, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.connectionDot {
+  width: 8px;
+  height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

@@ -1,0 +1,165 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Bagian Kiri */
+.login-left {
+  flex: 1;
+  background: linear-gradient(179deg, #f7825f, #2539a0); 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.illustration {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.login-right {
+  flex: 1;
+  padding: 60px 80px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-right h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #7f5fff;
+}
+
+/* Container untuk checkbox dan forgot password */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Label checkbox dan text "Ingat Saya" */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.forgot {
+  color: #5a73ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Tombol login */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #5a60ea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.btn-login:hover {
+  background-color: #4a50d0;
+}
+
+.btn-google,
+.btn-microsoft {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-google:hover,
+.btn-microsoft:hover {
+  background-color: #f4f4f4;
+}
+
+/* Register link di tengah bawah form */
+.register {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Link daftar di sini bergaris bawah */
+.link {
+  text-decoration: underline;
+  color: #5a60ea;
+  font-weight: 500;
+  cursor: pointer;
+}
