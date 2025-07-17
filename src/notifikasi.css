@@ -170,3 +170,149 @@ body {
   background: #0056b3;
   transform: scale(1.1);
 }
+
+.status-badge.ongoing {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.notifikasi-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-clear,
+.btn-reset {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn-clear {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-clear:hover {
+  background-color: #0056b3;
+}
+
+.btn-reset {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.btn-reset:hover {
+  background-color: #ec971f;
+}
+/* ================= MOBILE (≤768px) ================= */
+@media (max-width: 768px) {
+  .notifikasi-container {
+    padding: 16px;
+    margin: 80px 16px 40px;
+    box-shadow: none;
+  }
+
+  .notifikasi-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .notifikasi-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .btn-clear,
+  .btn-reset,
+  .clear-btn {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+
+  .notifikasi-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notif-title {
+    font-size: 0.9rem;
+  }
+
+  .notif-time {
+    font-size: 0.75rem;
+  }
+
+  .notif-action {
+    width: 100%;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .no-notif {
+    font-size: 0.85rem;
+  }
+
+  .back-btn-notifikasi {
+    font-size: 24px;
+    padding: 6px 10px;
+  }
+}
+
+/* ================= TABLET (769px–1024px) ================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .notifikasi-container {
+    padding: 24px;
+    margin: 40px 24px;
+  }
+
+  .notif-title {
+    font-size: 1rem;
+  }
+
+  .notif-time {
+    font-size: 0.85rem;
+  }
+
+  .btn-clear,
+  .btn-reset {
+    font-size: 0.8rem;
+    padding: 7px 14px;
+  }
+}
+
+/* ================= LAYAR BESAR / TV (≥1440px) ================= */
+@media (min-width: 1440px) {
+  .notifikasi-container {
+    max-width: 1000px;
+    padding: 32px;
+    margin-top: 60px;
+  }
+
+  .notifikasi-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .notif-title {
+    font-size: 1.2rem;
+  }
+
+  .notif-time {
+    font-size: 0.95rem;
+  }
+
+  .notif-action {
+    font-size: 1rem;
+    padding: 8px 18px;
+  }
+
+  .btn-clear,
+  .btn-reset {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+}

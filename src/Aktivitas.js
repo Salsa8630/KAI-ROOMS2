@@ -2,37 +2,36 @@ import React, { useState, useEffect } from 'react';
 import './Aktivitas.css';
 import { useNavigate } from 'react-router-dom';
 import logo from './KAI_ROOMS_logo.png';
-import { ref, onValue } from "firebase/database";
-import database from "./firebase"; // pastikan path-nya sesuai
 
 const Aktivitas = () => {
   const navigate = useNavigate();
-  const [currentMonth, setCurrentMonth] = useState(new Date(2025, 1)); // February 2025
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(12);
-
   const [scheduledMeetings, setScheduledMeetings] = useState([]);
-  const [eventDates, setEventDates] = useState([]); // DITAMBAH
+  const [eventDates, setEventDates] = useState([]); 
+  const [selectedEvents, setSelectedEvents] = useState([]); // ✅ tambahan
 
   useEffect(() => {
-    const scheduledRef = ref(database, "scheduledMeetings");
-    onValue(scheduledRef, (snapshot) => {
-      const data = snapshot.val();
-      const loaded = [];
-      const dates = new Set();
-
-      for (let id in data) {
-        loaded.push({ id, ...data[id] });
-        dates.add(data[id].tanggal);
-      }
-
-      setScheduledMeetings(loaded);
-      setEventDates([...dates]);
-    });
+    fetch(`${process.env.REACT_APP_API_URL}/api/booking`)
+      .then(res => res.json())
+      .then(data => {
+        const today = new Date().toISOString().slice(0, 10); 
+        const dates = new Set();
+        const loaded = data.map(item => {
+          dates.add(item.tanggal);
+          return item;
+        });
+        setScheduledMeetings(loaded);
+        setEventDates([...dates]);
+      })
+      .catch(err => {
+        console.error("Gagal mengambil data dari backend:", err);
+      });
   }, []);
 
-  const today = new Date().toISOString().slice(0, 10); // format: yyyy-mm-dd
-  const todayEvents = scheduledMeetings.filter(item => item.tanggal === today);
-  const laterEvents = scheduledMeetings.filter(item => item.tanggal > today);
+  const today = new Date().toISOString().slice(0, 10); 
+  const todayEvents = scheduledMeetings.filter(item => item.tanggal?.trim() === today);
+  const laterEvents = scheduledMeetings.filter(item => item.tanggal?.trim() > today);
 
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -67,21 +66,21 @@ const Aktivitas = () => {
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
   };
 
-  const handleDateClick = (day) => {
-    if (day) {
-      setSelectedDate(day);
-    }
-  };
-
-  // DITAMBAH: Format tanggal yyyy-mm-dd
   const formatDate = (year, month, day) => {
     const m = (month + 1).toString().padStart(2, '0');
     const d = day.toString().padStart(2, '0');
     return `${year}-${m}-${d}`;
   };
 
+  const handleDateClick = (day) => {
+    if (day) {
+      setSelectedDate(day);
+      const selectedFullDate = formatDate(currentMonth.getFullYear(), currentMonth.getMonth(), day);
+      const match = scheduledMeetings.filter(item => item.tanggal === selectedFullDate);
+      setSelectedEvents(match);
+    }
+  };
 
-  
   const handleBackToDashboard = () => {
     navigate('/dashboard');
   };
@@ -119,52 +118,67 @@ const Aktivitas = () => {
             <div className="calendar-days">
               {days.map((day, index) => (
                 <div
-  key={index}
-  className={`calendar-day ${day ? 'valid-day' : 'empty-day'} 
-    ${day === selectedDate ? 'selected' : ''}
-    ${day && eventDates.includes(formatDate(currentMonth.getFullYear(), currentMonth.getMonth(), day)) ? 'has-event' : ''}
-  `}
-  onClick={() => handleDateClick(day)}
->
-  {day}
-</div>
-
+                  key={index}
+                  className={`calendar-day ${day ? 'valid-day' : 'empty-day'} 
+                    ${day === selectedDate ? 'selected' : ''}
+                    ${day && eventDates.includes(formatDate(currentMonth.getFullYear(), currentMonth.getMonth(), day)) ? 'has-event' : ''}`}
+                  onClick={() => handleDateClick(day)}
+                >
+                  {day}
+                </div>
               ))}
             </div>
           </div>
         </div>
 
-<div className="events-section">
-  <h3 className="sticky-header">Events</h3>
-  <div className="event-list">
-    <h4 className="sticky-subheader">Today</h4>
-          {todayEvents.length > 0 ? todayEvents.map((event, index) => (
-            <div key={index} className="event-item">
-              <div className="event-time">{event.tanggal}, {event.waktuMulai}–{event.waktuSelesai}</div>
-              <div className="event-title">{event.namaRapat}</div>
-              <div className="event-unit">{event.penyelenggara}</div>
-              <div className="event-location">Lokasi: {event.lokasi}</div> {/* ✅ lokasi */}
-              <div className="event-room">Ruangan: {event.ruangan}</div>   {/* ✅ ruangan */}
-              <div className="event-type">Jenis: {event.jenisRapat}</div>  {/* ✅ jenis rapat */}
-            </div>
-          )) : <p style={{ fontStyle: 'italic', color: '#aaa' }}>No events today.</p>}
+        <div className="events-section">
+          <h3 className="sticky-header">Events</h3>
+          <div className="event-list">
+            <h4 className="sticky-subheader">Today</h4>
+            {todayEvents.length > 0 ? todayEvents.map((event, index) => (
+              <div key={index} className="event-item">
+                <div className="event-time">{event.tanggal}, {event.waktuMulai}–{event.waktuSelesai}</div>
+                <div className="event-title">{event.namaRapat}</div>
+                <div className="event-unit">{event.penyelenggara}</div>
+                <div className="event-location">Lokasi: {event.lokasi}</div>
+                <div className="event-room">Ruangan: {event.ruangan}</div>
+                <div className="event-type">Jenis: {event.jenisRapat}</div>
+              </div>
+            )) : <p style={{ fontStyle: 'italic', color: '#aaa' }}>No events today.</p>}
 
-          <h4 className="sticky-subheader">Later</h4>
-          {laterEvents.length > 0 ? laterEvents.map((event, index) => (
-            <div key={index} className="event-item">
-              <div className="event-time">{event.tanggal}, {event.waktuMulai}–{event.waktuSelesai}</div>
-              <div className="event-title">{event.namaRapat}</div>
-              <div className="event-unit">{event.penyelenggara}</div>
-              <div className="event-location">Lokasi: {event.lokasi}</div> {/* ✅ lokasi */}
-              <div className="event-room">Ruangan: {event.ruangan}</div>   {/* ✅ ruangan */}
-              <div className="event-type">Jenis: {event.jenisRapat}</div>  {/* ✅ jenis rapat */}
-            </div>
-          )) : <p style={{ fontStyle: 'italic', color: '#aaa' }}>No events later.</p>}
+            <h4 className="sticky-subheader">Later</h4>
+            {laterEvents.length > 0 ? laterEvents.map((event, index) => (
+              <div key={index} className="event-item">
+                <div className="event-time">{event.tanggal}, {event.waktuMulai}–{event.waktuSelesai}</div>
+                <div className="event-title">{event.namaRapat}</div>
+                <div className="event-unit">{event.penyelenggara}</div>
+                <div className="event-location">Lokasi: {event.lokasi}</div>
+                <div className="event-room">Ruangan: {event.ruangan}</div>
+                <div className="event-type">Jenis: {event.jenisRapat}</div>
+              </div>
+            )) : <p style={{ fontStyle: 'italic', color: '#aaa' }}>No events later.</p>}
+          </div>
+        </div>
+      </div>
 
-  </div> 
-      </div> 
-    </div> 
-  </div> 
+      {selectedEvents.length > 0 && (
+        <div className="selected-events-box">
+          <h3 className="sticky-header">Rapat pada {formatDate(currentMonth.getFullYear(), currentMonth.getMonth(), selectedDate)}</h3>
+          <div className="selected-event-list">
+            {selectedEvents.map((event, index) => (
+              <div key={index} className="event-item">
+                <div className="event-time">{event.tanggal}, {event.waktuMulai}–{event.waktuSelesai}</div>
+                <div className="event-title">{event.namaRapat}</div>
+                <div className="event-unit">{event.penyelenggara}</div>
+                <div className="event-location">Lokasi: {event.lokasi}</div>
+                <div className="event-room">Ruangan: {event.ruangan}</div>
+                <div className="event-type">Jenis: {event.jenisRapat}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

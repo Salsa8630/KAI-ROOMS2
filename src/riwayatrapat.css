@@ -80,10 +80,9 @@
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
-  fill: #7B61FF; /* ungu polos */
+  fill: #7B61FF;
   pointer-events: none;
 }
-
 
 .search-input {
   width: 100%;
@@ -120,19 +119,41 @@
   box-shadow: 0 4px 12px #490eb01a;
 }
 
+/* Tambahan: Scroll di dalam kotak */
+.meeting-table {
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.meeting-table::-webkit-scrollbar {
+  width: 6px;
+}
+
+.meeting-table::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
 .table-header {
   display: grid;
   grid-template-columns: 3fr 2fr 1fr 1fr 1fr;
   background-color: #f5f5f5;
   border-bottom: 1px solid #e0e0e0;
+
+  /* Tambahan biar header tetap di atas saat scroll */
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
+
 
 .th {
   padding: 15px;
   font-weight: 600;
   color: #541789;
   text-align: left;
-   font-size: 16px; 
+  font-size: 16px;
 }
 
 .table-body {
@@ -203,7 +224,6 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
-
 }
 
 .back-button-riwayat {
@@ -222,19 +242,65 @@
   .search-section {
     flex-direction: column;
   }
-  
+
   .table-header,
   .table-row {
     grid-template-columns: 2fr 2fr 1fr;
   }
-  
+
   .status,
   .actions {
     display: none;
   }
-  
+
   .th.judul-rapat,
   .td.judul-rapat {
     grid-column: span 3;
+  }
+
+  .search-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .meeting-table {
+    overflow-x: auto;
+  }
+
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .th.actions,
+  .td.actions,
+  .th.status,
+  .td.status {
+    display: none;
+  }
+
+  .page-title h1 {
+    font-size: 20px;
+  }
+
+  .detail-button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .content-area {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .content-area {
+    max-width: 1400px;
+  }
+
+  .page-title h1 {
+    font-size: 28px;
   }
 }

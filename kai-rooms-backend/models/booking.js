@@ -12,7 +12,8 @@ const bookingSchema = new mongoose.Schema({
   jenisRapat: String,
   kapasitas: Number,
   catatan: String,
-  linkMeet: String
+  linkMeet: String // optional
 });
+
 
 module.exports = mongoose.model('Booking', bookingSchema);

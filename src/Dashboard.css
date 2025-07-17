@@ -231,7 +231,14 @@ td {
   border-left: 1px solid #e9ecef;
   font-size: 12px;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 🌟 penting */
+  position: sticky;
+  top: 0;
+  overflow-y: auto; /* 🌟 supaya scrollable */
 }
+
 
 .meeting-list h4 {
   margin-bottom: 20px;
@@ -260,6 +267,22 @@ td {
   background: #e9ecef;
   margin: 20px 0;
 }
+.list-section {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+
+.list-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list-section::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
 
 /* ====== Popup Overlay dan Form ====== */
 .popup-overlay {
@@ -561,9 +584,18 @@ td {
 }
 
 .search-result-list {
-  list-style: none;
-  padding: 15px 0 0 0;
-  margin: 0;
+  max-height: 350px;         
+  overflow-y: auto;          
+  padding-right: 5px;        
+}
+
+.search-result-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-result-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .search-result-item {
@@ -741,11 +773,11 @@ td {
   margin-bottom: 20px;
 }
 
-/* Tombol-tombol pilihan */
+
 .popup-choice-option .btns {
   display: flex;
-  flex-direction: column;  /* tombol disusun vertikal */
-  gap: 12px;                /* kasih jarak antar tombol */
+  flex-direction: column;  
+  gap: 12px;                
   margin-top: 20px;       
 }
 
@@ -766,8 +798,94 @@ td {
   background-color: #0056b3;
 }
 
-/* Animasi masuk */
+.info-box-blue {
+  background: #e6f0ff;
+  color: #003366;
+  padding: 12px 16px;
+  border-left: 4px solid #3366cc;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== Responsive Styling ===================== */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .main-dashboard {
+    padding: 15px 20px;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px;
+  }
+
+  .sidebar nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .meeting-list {
+    width: 100%;
+    padding: 15px;
+    border-left: none;
+    border-top: 1px solid #e9ecef;
+  }
+
+  .popup-form {
+    padding: 20px;
+  }
+
+  .popup-form .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .popup-form .btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .popup-card {
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main-dashboard {
+    padding: 30px 50px;
+  }
+
+  .greeting h3 {
+    font-size: 18px;
+  }
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .meeting-list {
+    width: 320px;
+  }
 }

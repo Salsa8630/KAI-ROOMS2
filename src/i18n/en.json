@@ -1,0 +1,16 @@
+{
+  "pengaturanSistem": "System Settings",
+  "bahasa": "Language",
+  "zonaWaktu": "Time Zone",
+  "modeGelap": "Dark Mode",
+  "aktifkanTemaGelap": "Enable dark theme",
+  "simpan": "Save",
+  "kembali": "Back",
+  "informasiProfil": "Profile Information",
+  "unggahFoto": "Upload Photo",
+  "gantiFoto": "Change Photo",
+  "hapus": "Delete",
+  "departemen": "Department / Unit",
+  "telepon": "Phone Number",
+  "email": "Email Address"
+}

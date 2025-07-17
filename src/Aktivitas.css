@@ -1,4 +1,3 @@
-
 .aktivitas-container {
   background: linear-gradient(135deg, #ff7b00 0%, #ff9500 100%);
   min-height: 100vh;
@@ -261,4 +260,104 @@
     min-height: 35px;
     font-size: 14px;
   }
+}
+/* Tablet landscape & laptop kecil (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aktivitas-content {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .calendar-section,
+  .events-section {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .calendar-day {
+    font-size: 15px;
+    min-height: 40px;
+  }
+}
+
+/* Laptop sedang–besar (1025px–1439px) */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  .calendar-section,
+  .events-section {
+    padding: 28px;
+  }
+
+  .calendar-day {
+    font-size: 16px;
+    min-height: 48px;
+  }
+}
+
+/* Layar sangat besar (TV/display 1440px+) */
+@media (min-width: 1440px) {
+  .aktivitas-content {
+    max-width: 1400px;
+    gap: 40px;
+  }
+
+  .calendar-section,
+  .events-section {
+    padding: 32px;
+  }
+
+  .calendar-day {
+    font-size: 18px;
+    min-height: 55px;
+  }
+
+  .event-title {
+    font-size: 16px;
+  }
+
+  .event-item {
+    padding: 18px;
+  }
+}
+/* 🧾 Kotak baru yang muncul setelah klik tanggal (riwayat meeting per tanggal) */
+.selected-events-box {
+  position: relative;       /* ✅ penting agar sticky anak-anaknya patuh */
+  background: white;
+  margin: 30px auto 0;
+  padding: 0 20px 20px;     /* ✅ padding atas 0 agar header nempel */
+  max-width: 1200px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* 📌 Judul tanggal tetap kelihatan saat scroll */
+.selected-events-box h3 {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 20;
+  margin: 0;                /* ✅ hilangkan jarak dari atas */
+  padding: 12px 0;          /* ✅ bikin nyaman tapi mentok atas */
+  border-bottom: 1px solid #eee;
+  font-size: 18px;
+}
+
+
+/* 📋 Daftar rapat yang muncul setelah pilih tanggal */
+.selected-event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.selected-event-list .event-item {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #ff7b00;
+  font-size: 14px;
 }

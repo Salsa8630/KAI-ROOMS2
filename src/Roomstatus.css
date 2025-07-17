@@ -1,9 +1,11 @@
 .room-status-container {
   display: flex;
-  height: 130vh;
+  min-height: 100vh; /* ✅ auto sesuai tinggi layar */
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-sizing: border-box;
 }
+
 
 .status-sidebar {
   flex: 1;
@@ -11,6 +13,7 @@
   color: white;
   padding: 30px;
   display: flex;
+  justify-content: center; 
   flex-direction: column;
   align-items: center;
   position: relative;
@@ -79,6 +82,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 120px;
   text-align: center;
 }
@@ -270,5 +274,18 @@
   
   .room-name {
     font-size: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .timer-text {
+    font-size: 48px;
+  }
+
+  .room-name {
+    font-size: 28px;
+  }
+
+  .room-info {
+    padding-top: 60px;
   }
 }

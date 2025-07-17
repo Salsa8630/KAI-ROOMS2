@@ -1,0 +1,34 @@
+/* layout.css */
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px;
+    justify-content: flex-start;
+  }
+}
+
+/* tablet landscape / small laptop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .page-container {
+    padding: 32px;
+  }
+}
+
+/* layar gede (TV / monitor gede) */
+@media (min-width: 1600px) {
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+}

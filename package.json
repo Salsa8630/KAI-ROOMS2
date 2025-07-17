@@ -5,14 +5,18 @@
   "dependencies": {
     "@react-navigation/native": "^7.1.9",
     "@react-navigation/native-stack": "^7.3.13",
+    "@react-oauth/google": "^0.12.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "expo": "^53.0.9",
     "firebase": "^11.9.1",
+    "i18next": "^25.3.2",
+    "multer": "^2.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^15.6.0",
     "react-native-safe-area-context": "^5.4.0",
     "react-native-screens": "^4.10.0",
     "react-router-dom": "^7.6.0",
@@ -42,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
   }
 }
